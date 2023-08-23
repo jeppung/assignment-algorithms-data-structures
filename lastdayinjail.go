@@ -20,7 +20,7 @@ func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Perso
 		return []Person{}, []Person{}
 	}
 
-	sort(criminals)
+	sort(criminals, lengthCriminals)
 
 	if lengthCriminals >= defaultReleasedCount {
 		released = append(released, criminals[:defaultReleasedCount]...)
@@ -56,11 +56,11 @@ func searchChosenPerson(criminals []Person, chosenPerson string) int {
 	return -1
 }
 
-func sort(criminals []Person) {
+func sort(criminals []Person, lengthCriminals int) {
 	swapped := false
 
 	for {
-		for i := 0; i < len(criminals)-1; i++ {
+		for i := 0; i < lengthCriminals-1; i++ {
 			if criminals[i].CriminalScore > criminals[i+1].CriminalScore {
 				temp := criminals[i]
 				criminals[i] = criminals[i+1]
