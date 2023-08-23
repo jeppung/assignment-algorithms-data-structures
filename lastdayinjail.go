@@ -1,5 +1,7 @@
 package main
 
+import "strings"
+
 type Person struct {
 	Name          string
 	CriminalScore int
@@ -12,6 +14,15 @@ func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Perso
 	// --------------------
 	return nil, nil
 	// --------------------
+}
+
+func searchChosenPerson(criminals []Person, chosenPerson string) int {
+	for i := 0; i < len(criminals); i++ {
+		if strings.ToLower(criminals[i].Name) == strings.ToLower(chosenPerson) {
+			return i
+		}
+	}
+	return -1
 }
 
 func bubbleSort(criminals []Person) {
