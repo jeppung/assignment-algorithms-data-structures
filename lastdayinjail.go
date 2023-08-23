@@ -30,7 +30,7 @@ func bubbleSort(criminals []Person) {
 
 	for {
 		for i := 0; i < len(criminals)-1; i++ {
-			if criminals[i].CriminalScore > criminals[i+1].CriminalScore {
+			if criminals[i].CriminalScore > criminals[i+1].CriminalScore || criminals[i].Name > criminals[i+1].Name {
 				criminals[i], criminals[i+1] = criminals[i+1], criminals[i]
 				swapped = true
 			} else {
