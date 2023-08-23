@@ -16,6 +16,10 @@ func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Perso
 	defaultReleasedCount := 5
 	defaultVehicleSeats := 3
 
+	if lengthCriminals == 0 {
+		return []Person{}, []Person{}
+	}
+
 	sort(criminals)
 
 	if lengthCriminals >= defaultReleasedCount {
