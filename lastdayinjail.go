@@ -11,11 +11,13 @@ type Person struct {
 func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Person, waiting []Person) {
 	// Write your code here
 	released := []Person{}
+	defaultReleasedCount := 5
+	defaultVehicleSeats := 3
 
 	sort(criminals)
 
-	if len(criminals) >= 5 {
-		released = append(released, criminals[:5]...)
+	if len(criminals) >= defaultReleasedCount {
+		released = append(released, criminals[:defaultReleasedCount]...)
 	} else {
 		released = append(released, criminals...)
 	}
@@ -25,9 +27,9 @@ func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Perso
 		released = append(released, criminals[chosenPersonIndex])
 	}
 
-	if len(released) >= 3 {
-		onTransport = append(onTransport, criminals[:3]...)
-		waiting = append(waiting, released[3:]...)
+	if len(released) >= defaultVehicleSeats {
+		onTransport = append(onTransport, criminals[:defaultVehicleSeats]...)
+		waiting = append(waiting, released[defaultVehicleSeats:]...)
 	} else {
 		onTransport = append(onTransport, criminals...)
 		waiting = append(waiting, []Person{}...)
