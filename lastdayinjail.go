@@ -12,39 +12,47 @@ func LastDayInJail(criminals []Person, chosenPerson string) (onTransport []Perso
 	// Write your code here
 	released := []Person{}
 	lengthCriminals := len(criminals)
-	var lengthReleased int
-	defaultReleasedCount := 5
-	defaultVehicleSeats := 3
 
 	if lengthCriminals == 0 {
 		return []Person{}, []Person{}
 	}
 
-	sort(criminals, lengthCriminals)
+	sortCriminals(criminals, lengthCriminals)
 
-	if lengthCriminals >= defaultReleasedCount {
-		released = append(released, criminals[:defaultReleasedCount]...)
-	} else {
-		released = append(released, criminals...)
-	}
+	setReleasedCriminals(lengthCriminals, &released, criminals, chosenPerson)
 
-	chosenPersonIndex := searchChosenPerson(criminals, chosenPerson)
-	if (chosenPerson != "") && (chosenPersonIndex != -1) {
-		released = append(released, criminals[chosenPersonIndex])
-	}
-
-	lengthReleased = len(released)
-	if lengthReleased >= defaultVehicleSeats {
-		onTransport = append(onTransport, criminals[:defaultVehicleSeats]...)
-		waiting = append(waiting, released[defaultVehicleSeats:]...)
-	} else {
-		onTransport = append(onTransport, criminals...)
-		waiting = append(waiting, []Person{}...)
-	}
+	releaseProcess(released, &onTransport, &waiting)
 
 	// --------------------
 	return onTransport, waiting
 	// --------------------
+}
+
+func setReleasedCriminals(lengthCriminals int, released *[]Person, criminals []Person, chosenPerson string) {
+	defaultReleasedCount := 5
+	if lengthCriminals >= defaultReleasedCount {
+		*released = append(*released, criminals[:defaultReleasedCount]...)
+	} else {
+		*released = append(*released, criminals...)
+	}
+
+	chosenPersonIndex := searchChosenPerson(criminals, chosenPerson)
+	if (chosenPerson != "") && (chosenPersonIndex != -1) {
+		*released = append(*released, criminals[chosenPersonIndex])
+	}
+
+}
+
+func releaseProcess(released []Person, onTransport *[]Person, waiting *[]Person) {
+	lengthReleased := len(released)
+	defaultVehicleSeats := 3
+	if lengthReleased >= defaultVehicleSeats {
+		*onTransport = append(*onTransport, released[:defaultVehicleSeats]...)
+		*waiting = append(*waiting, released[defaultVehicleSeats:]...)
+	} else {
+		*onTransport = append(*onTransport, released...)
+		*waiting = append(*waiting, []Person{}...)
+	}
 }
 
 func searchChosenPerson(criminals []Person, chosenPerson string) int {
@@ -56,7 +64,7 @@ func searchChosenPerson(criminals []Person, chosenPerson string) int {
 	return -1
 }
 
-func sort(criminals []Person, lengthCriminals int) {
+func sortCriminals(criminals []Person, lengthCriminals int) {
 	swapped := false
 
 	for {
