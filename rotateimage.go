@@ -16,8 +16,24 @@ type Pixel struct {
 // Task 2.a
 func RotateImage(pixels [][]int) [][]int {
 	// Write your code here
+	rotated := [][]int{}
+
+	pixelsLength := len(pixels)
+	loopCounter := pixelsLength
+	flag := 0
+
+	for loopCounter > 0 && flag < pixelsLength {
+		temp := []int{}
+		for i := len(pixels) - 1; i >= 0; i-- {
+			temp = append(temp, pixels[i][flag])
+		}
+		rotated = append(rotated, temp)
+		flag++
+		loopCounter--
+	}
+
 	// --------------------
-	return nil
+	return rotated
 	// --------------------
 }
 
