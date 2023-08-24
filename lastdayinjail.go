@@ -1,6 +1,8 @@
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 type Person struct {
 	Name          string
@@ -38,9 +40,19 @@ func setReleasedCriminals(lengthCriminals int, released *[]Person, criminals []P
 
 	chosenPersonIndex := searchChosenPerson(criminals, chosenPerson)
 	if (chosenPerson != "") && (chosenPersonIndex != -1) {
-		*released = append(*released, criminals[chosenPersonIndex])
+		if isChosenPersonInReleased(released, chosenPerson) == false {
+			*released = append(*released, criminals[chosenPersonIndex])
+		}
 	}
+}
 
+func isChosenPersonInReleased(released *[]Person, chosenPerson string) bool {
+	for i := 0; i < len(*released); i++ {
+		if (*released)[i].Name == chosenPerson {
+			return true
+		}
+	}
+	return false
 }
 
 func releaseProcess(released []Person, onTransport *[]Person, waiting *[]Person) {
