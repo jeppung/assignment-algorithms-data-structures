@@ -44,7 +44,7 @@ func main() {
 	val := RotateImage(pixels)
 	fmt.Println(val)
 	// Task 2.b
-	// RunRotateActualImage()
+	RunRotateActualImage()
 
 	// Task 3.a
 	// _ := RobotTranslatorV2("")
