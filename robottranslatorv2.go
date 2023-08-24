@@ -14,11 +14,9 @@ func RobotTranslatorV2(cmd string) string {
 	var count int
 
 	for i := flag; i < len(cmd); i++ {
-		if string(cmd[i]) == "X" {
-			if len(filteredCmd)-1 != -1 {
-				filteredCmd = filteredCmd[:len(filteredCmd)-1]
-				flag = 0
-			}
+		if string(cmd[i]) == "X" && len(filteredCmd)-1 != -1 {
+			filteredCmd = filteredCmd[:len(filteredCmd)-1]
+			flag = 0
 		} else {
 			filteredCmd = append(filteredCmd, string(cmd[i]))
 		}
