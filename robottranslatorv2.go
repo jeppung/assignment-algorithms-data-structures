@@ -10,12 +10,16 @@ func RobotTranslatorV2(cmd string) string {
 	// Write your code here
 	temp := []string{}
 	filteredCmd := []string{}
-	var flag int = 0
+	cancelCmd := "X"
+	rightCmd := "R"
+	leftCmd := "L"
+	advanceCmd := "A"
+	flag := 0
 	var count int
 
 	for i := flag; i < len(cmd); i++ {
 		letterCase := strings.ToUpper(string(cmd[i]))
-		if letterCase == "X" {
+		if letterCase == cancelCmd {
 			if len(filteredCmd)-1 != -1 {
 				filteredCmd = filteredCmd[:len(filteredCmd)-1]
 				flag = 0
@@ -27,24 +31,24 @@ func RobotTranslatorV2(cmd string) string {
 
 	for i := 0; i < len(filteredCmd); i++ {
 		switch string(filteredCmd[i]) {
-		case "R":
-			if i != 0 && string(filteredCmd[i-1]) == "R" {
+		case rightCmd:
+			if i != 0 && string(filteredCmd[i-1]) == rightCmd {
 				count++
 				temp[len(temp)-1] = fmt.Sprintf("Move right %d times", count)
 			} else {
 				count = 1
 				temp = append(temp, fmt.Sprintf("Move right %d time", count))
 			}
-		case "L":
-			if i != 0 && string(filteredCmd[i-1]) == "L" {
+		case leftCmd:
+			if i != 0 && string(filteredCmd[i-1]) == leftCmd {
 				count++
 				temp[len(temp)-1] = fmt.Sprintf("Move left %d times", count)
 			} else {
 				count = 1
 				temp = append(temp, fmt.Sprintf("Move left %d time", count))
 			}
-		case "A":
-			if i != 0 && string(filteredCmd[i-1]) == "A" {
+		case advanceCmd:
+			if i != 0 && string(filteredCmd[i-1]) == advanceCmd {
 				count++
 				temp[len(temp)-1] = fmt.Sprintf("Move advance %d times", count)
 			} else {
