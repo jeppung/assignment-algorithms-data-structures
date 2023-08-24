@@ -48,7 +48,7 @@ func setReleasedCriminals(lengthCriminals int, released *[]Person, criminals []P
 
 func isChosenPersonInReleased(released *[]Person, chosenPerson string) bool {
 	for i := 0; i < len(*released); i++ {
-		if (*released)[i].Name == chosenPerson {
+		if strings.ToLower((*released)[i].Name) == strings.ToLower(chosenPerson) {
 			return true
 		}
 	}
