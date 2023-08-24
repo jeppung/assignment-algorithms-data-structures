@@ -20,29 +20,11 @@ func RobotTranslatorV2(cmd string) string {
 	for i := 0; i < len(filteredCmd); i++ {
 		switch string(filteredCmd[i]) {
 		case rightCmd:
-			if i != 0 && string(filteredCmd[i-1]) == rightCmd {
-				count++
-				temp[len(temp)-1] = fmt.Sprintf("Move right %d times", count)
-			} else {
-				count = 1
-				temp = append(temp, fmt.Sprintf("Move right %d time", count))
-			}
+			processCommand(&filteredCmd, rightCmd, "right", &count, &temp, &i)
 		case leftCmd:
-			if i != 0 && string(filteredCmd[i-1]) == leftCmd {
-				count++
-				temp[len(temp)-1] = fmt.Sprintf("Move left %d times", count)
-			} else {
-				count = 1
-				temp = append(temp, fmt.Sprintf("Move left %d time", count))
-			}
+			processCommand(&filteredCmd, leftCmd, "left", &count, &temp, &i)
 		case advanceCmd:
-			if i != 0 && string(filteredCmd[i-1]) == advanceCmd {
-				count++
-				temp[len(temp)-1] = fmt.Sprintf("Move advance %d times", count)
-			} else {
-				count = 1
-				temp = append(temp, fmt.Sprintf("Move advance %d time", count))
-			}
+			processCommand(&filteredCmd, advanceCmd, "advance", &count, &temp, &i)
 		default:
 			return "Invalid command"
 		}
@@ -51,6 +33,16 @@ func RobotTranslatorV2(cmd string) string {
 	// --------------------
 	return strings.Join(temp, "\n")
 	// --------------------
+}
+
+func processCommand(filteredCmd *[]string, cmd string, cmdName string, count *int, temp *[]string, currIndex *int) {
+	if *currIndex != 0 && string((*filteredCmd)[*currIndex-1]) == cmd {
+		*count++
+		(*temp)[len(*temp)-1] = fmt.Sprintf("Move %s %d times", cmdName, *count)
+	} else {
+		*count = 1
+		*temp = append(*temp, fmt.Sprintf("Move %s %d time", cmdName, *count))
+	}
 }
 
 func filterCmd(cmd string, filteredCmd *[]string) {
