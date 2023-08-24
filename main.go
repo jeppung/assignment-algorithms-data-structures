@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 // If you want to test your code, you may test it here...
 func main() {
 	// Task 1.a
@@ -26,7 +24,7 @@ func main() {
 	// }
 
 	// persons3 := []Person{}
-	// onTransport, waiting := LastDayInJail(persons, "Poni")
+	// onTransport, waiting := LastDayInJail(persons, "poni")
 	// onTransport2, waiting2 := LastDayInJail(persons2, "")
 	// onTransport3, waiting3 := LastDayInJail(persons3, "")
 
@@ -43,18 +41,29 @@ func main() {
 	// }
 	// val := RotateImage(pixels)
 	// fmt.Println(val)
+
+	// pixels2 := [][]int{}
+	// val2 := RotateImage(pixels2)
+	// fmt.Println(val2)
+
+	// var test [][]int = nil
+	// val3 := RotateImage(test)
+	// fmt.Println(val3)
+
 	// Task 2.b
 	// RunRotateActualImage()
 
 	// Task 3.a
+	// commands := RobotTranslatorV2("")
+	// fmt.Println(commands)
 	// commands := RobotTranslatorV2("RLXXXA")
 	// fmt.Println(commands)
 	// commands2 := RobotTranslatorV2("RRRXXAAAXLA")
 	// fmt.Println(commands2)
 	// commands3 := RobotTranslatorV2("RSXA")
 	// fmt.Println(commands3)
-	commands4 := RobotTranslatorV2("SSXA")
-	fmt.Println(commands4)
+	// commands4 := RobotTranslatorV2("SSXA")
+	// fmt.Println(commands4)
 	// commands2 := RobotTranslatorV2("rrrxxaaaxla")
 	// fmt.Println(commands2)
 
