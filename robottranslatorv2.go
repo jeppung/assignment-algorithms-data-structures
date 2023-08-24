@@ -14,11 +14,12 @@ func RobotTranslatorV2(cmd string) string {
 	var count int
 
 	for i := flag; i < len(cmd); i++ {
-		if string(cmd[i]) == "X" && len(filteredCmd)-1 != -1 {
+		letterCase := strings.ToUpper(string(cmd[i]))
+		if letterCase == "X" && len(filteredCmd)-1 != -1 {
 			filteredCmd = filteredCmd[:len(filteredCmd)-1]
 			flag = 0
 		} else {
-			filteredCmd = append(filteredCmd, string(cmd[i]))
+			filteredCmd = append(filteredCmd, letterCase)
 		}
 	}
 
