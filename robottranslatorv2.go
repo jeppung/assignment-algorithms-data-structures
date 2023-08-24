@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 // Task 3.a
@@ -52,8 +53,7 @@ func RobotTranslatorV2(cmd string) string {
 		}
 	}
 
-	fmt.Println(temp)
 	// --------------------
-	return ""
+	return strings.Join(temp, "\n")
 	// --------------------
 }
