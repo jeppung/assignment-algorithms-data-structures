@@ -35,17 +35,18 @@ func main() {
 	// fmt.Println(onTransport3, waiting3)
 
 	// Task 2.a
-	pixels := [][]int{
-		{0, 1, 2, 3},
-		{4, 5, 6, 7},
-		{8, 9, 10, 11},
-		{12, 13, 14, 15},
-	}
-	val := RotateImage(pixels)
-	fmt.Println(val)
+	// pixels := [][]int{
+	// 	{0, 1, 2, 3},
+	// 	{4, 5, 6, 7},
+	// 	{8, 9, 10, 11},
+	// 	{12, 13, 14, 15},
+	// }
+	// val := RotateImage(pixels)
+	// fmt.Println(val)
 	// Task 2.b
-	RunRotateActualImage()
+	// RunRotateActualImage()
 
 	// Task 3.a
-	// _ := RobotTranslatorV2("")
+	commands := RobotTranslatorV2("RSXA")
+	fmt.Println(commands)
 }
