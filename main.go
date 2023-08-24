@@ -47,6 +47,15 @@ func main() {
 	// RunRotateActualImage()
 
 	// Task 3.a
-	commands := RobotTranslatorV2("RSXA")
-	fmt.Println(commands)
+	// commands := RobotTranslatorV2("RLXXXA")
+	// fmt.Println(commands)
+	// commands2 := RobotTranslatorV2("RRRXXAAAXLA")
+	// fmt.Println(commands2)
+	// commands3 := RobotTranslatorV2("RSXA")
+	// fmt.Println(commands3)
+	commands4 := RobotTranslatorV2("SSXA")
+	fmt.Println(commands4)
+	// commands2 := RobotTranslatorV2("rrrxxaaaxla")
+	// fmt.Println(commands2)
+
 }

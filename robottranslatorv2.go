@@ -15,9 +15,11 @@ func RobotTranslatorV2(cmd string) string {
 
 	for i := flag; i < len(cmd); i++ {
 		letterCase := strings.ToUpper(string(cmd[i]))
-		if letterCase == "X" && len(filteredCmd)-1 != -1 {
-			filteredCmd = filteredCmd[:len(filteredCmd)-1]
-			flag = 0
+		if letterCase == "X" {
+			if len(filteredCmd)-1 != -1 {
+				filteredCmd = filteredCmd[:len(filteredCmd)-1]
+				flag = 0
+			}
 		} else {
 			filteredCmd = append(filteredCmd, letterCase)
 		}
@@ -49,6 +51,8 @@ func RobotTranslatorV2(cmd string) string {
 				count = 1
 				temp = append(temp, fmt.Sprintf("Move advance %d time", count))
 			}
+		default:
+			return "Invalid command"
 		}
 	}
 
