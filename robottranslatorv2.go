@@ -10,24 +10,12 @@ func RobotTranslatorV2(cmd string) string {
 	// Write your code here
 	temp := []string{}
 	filteredCmd := []string{}
-	cancelCmd := "X"
 	rightCmd := "R"
 	leftCmd := "L"
 	advanceCmd := "A"
-	flag := 0
 	var count int
 
-	for i := flag; i < len(cmd); i++ {
-		letterCase := strings.ToUpper(string(cmd[i]))
-		if letterCase == cancelCmd {
-			if len(filteredCmd)-1 != -1 {
-				filteredCmd = filteredCmd[:len(filteredCmd)-1]
-				flag = 0
-			}
-		} else {
-			filteredCmd = append(filteredCmd, letterCase)
-		}
-	}
+	filterCmd(cmd, &filteredCmd)
 
 	for i := 0; i < len(filteredCmd); i++ {
 		switch string(filteredCmd[i]) {
@@ -63,4 +51,20 @@ func RobotTranslatorV2(cmd string) string {
 	// --------------------
 	return strings.Join(temp, "\n")
 	// --------------------
+}
+
+func filterCmd(cmd string, filteredCmd *[]string) {
+	flag := 0
+	cancelCmd := "X"
+	for i := flag; i < len(cmd); i++ {
+		letterCase := strings.ToUpper(string(cmd[i]))
+		if letterCase == cancelCmd {
+			if len(*filteredCmd)-1 != -1 {
+				*filteredCmd = (*filteredCmd)[:len(*filteredCmd)-1]
+				flag = 0
+			}
+		} else {
+			*filteredCmd = append(*filteredCmd, letterCase)
+		}
+	}
 }
