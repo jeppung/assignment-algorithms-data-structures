@@ -18,6 +18,10 @@ func RotateImage(pixels [][]int) [][]int {
 	// Write your code here
 	rotated := [][]int{}
 
+	if len(pixels) == 0 {
+		return [][]int{}
+	}
+
 	pixelsLength := len(pixels)
 	loopCounter := pixelsLength
 	flag := 0
@@ -42,6 +46,10 @@ func RotateImage(pixels [][]int) [][]int {
 func RotateActualImage(pixels [][]Pixel) [][]Pixel {
 	// Write your code here
 	rotated := [][]Pixel{}
+
+	if len(pixels) == 0 {
+		return [][]Pixel{}
+	}
 
 	pixelsLength := len(pixels)
 	loopCounter := pixelsLength
