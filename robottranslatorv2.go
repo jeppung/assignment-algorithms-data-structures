@@ -30,7 +30,7 @@ func RobotTranslatorV2(cmd string) string {
 				temp[len(temp)-1] = fmt.Sprintf("Move right %d times", count)
 			} else {
 				count = 1
-				temp = append(temp, fmt.Sprintf("Move right %d times", count))
+				temp = append(temp, fmt.Sprintf("Move right %d time", count))
 			}
 		case "L":
 			if i != 0 && string(filteredCmd[i-1]) == "L" {
@@ -38,7 +38,7 @@ func RobotTranslatorV2(cmd string) string {
 				temp[len(temp)-1] = fmt.Sprintf("Move left %d times", count)
 			} else {
 				count = 1
-				temp = append(temp, fmt.Sprintf("Move left %d times", count))
+				temp = append(temp, fmt.Sprintf("Move left %d time", count))
 			}
 		case "A":
 			if i != 0 && string(filteredCmd[i-1]) == "A" {
@@ -46,7 +46,7 @@ func RobotTranslatorV2(cmd string) string {
 				temp[len(temp)-1] = fmt.Sprintf("Move advance %d times", count)
 			} else {
 				count = 1
-				temp = append(temp, fmt.Sprintf("Move advance %d times", count))
+				temp = append(temp, fmt.Sprintf("Move advance %d time", count))
 			}
 		}
 	}
