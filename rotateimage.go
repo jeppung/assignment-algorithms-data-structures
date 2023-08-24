@@ -41,8 +41,23 @@ func RotateImage(pixels [][]int) [][]int {
 // To test this function ,you can execute the RunRotateActualImage() on main
 func RotateActualImage(pixels [][]Pixel) [][]Pixel {
 	// Write your code here
+	rotated := [][]Pixel{}
+
+	pixelsLength := len(pixels)
+	loopCounter := pixelsLength
+	flag := 0
+
+	for loopCounter > 0 && flag < pixelsLength {
+		temp := []Pixel{}
+		for i := len(pixels) - 1; i >= 0; i-- {
+			temp = append(temp, pixels[i][flag])
+		}
+		rotated = append(rotated, temp)
+		flag++
+		loopCounter--
+	}
 	// --------------------
-	return nil
+	return rotated
 	// --------------------
 }
 
